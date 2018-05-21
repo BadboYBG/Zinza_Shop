@@ -2,7 +2,7 @@ class CategoriesController < ApplicationController
   before_action :category_params
 
   def show
-  	@products = Product.list_product_of_category(@category.id).page(params[:page]).per 6
+  	@products = @category.products.page(params[:page]).per 6
   end
 
   private

@@ -1,0 +1,52 @@
+.container
+  .jumbotron
+    .row
+      .col-md-4.col-xs-12.col-sm-6.col-lg-4
+        %img.img{:alt => "stack photo", :src => "https://www.svgimages.com/svg-image/s5/man-passportsize-silhouette-icon-256x256.png"}/
+      .col-md-8.col-xs-12.col-sm-6.col-lg-8
+        .container{:style => "border-bottom:1px solid black"}
+          %h2= @user.name
+        %hr/
+        %ul.container.details
+          %li
+            %p
+              %span.glyphicon.glyphicon-earphone.one{:style => "width:50px;"}>
+              = @user.phone
+          %li
+            %p
+              %span.glyphicon.glyphicon-envelope.one{:style => "width:50px;"}>
+              = @user.email
+          %li
+            %p
+              %span.glyphicon.glyphicon-map-marker.one{:style => "width:50px;"}>
+              = @user.address
+          %li
+            %p
+              %span.glyphicon.glyphicon-new-window.one{:style => "width:50px;"}
+              = link_to "Edit", "#"
+
+  .row
+  .span5
+    %table.table.table-striped.table-condensed
+      %thead
+        %tr
+          %th #
+          %th Order ID
+          %th Date registered
+          %th Total
+          %th Address
+          %th Status
+      %tbody
+        - @orders.each_with_index do |order, index|
+          %tr
+            %td= create_index params[:page], index, 6 
+            %td= order.id
+            %td= order.created_at
+            %td $ #{order.total}
+            %td= order.address
+            %td
+              - if order.status == "pending"
+                %span.label.label-warning Pending
+              - else
+                %span.label.label-success Active
+        
