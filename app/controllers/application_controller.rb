@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  #layout :layout_by_resource
+
   protect_from_forgery with: :exception
 
    include CartsHelper
@@ -21,4 +23,15 @@ class ApplicationController < ActionController::Base
     session[:order_items] ||= Hash.new
     session[:time] ||= Hash.new
   end
+
+
+  # private
+
+  # def layout_by_resource
+  #   if devise_controller?
+  #     "layouts/login"
+  #   else
+  #     "application"
+  #   end
+  # end
 end

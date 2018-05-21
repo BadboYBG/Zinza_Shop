@@ -1,0 +1,51 @@
+%h1 Edit
+%link#bootstrap-css{:href => "//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css", :rel => "stylesheet"}/
+%script{:src => "//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"}
+%script{:src => "//code.jquery.com/jquery-1.11.1.min.js"}
+.container
+  #loginbox.mainbox.col-md-6.col-md-offset-3.col-sm-8.col-sm-offset-2{:style => "margin-top:50px;"}
+    .panel.panel-info
+      .panel-heading
+        .panel-title Sign Up
+        %div{:style => "float:right; font-size: 80%; position: relative; top:-10px"}= link_to "Forgot your password?", new_password_path(resource_name)
+      .panel-body{:style => "padding-top:30px"}
+        #login-alert.alert.alert-danger.col-sm-12{:style => "display:none"}
+        = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }, class: "form-horizontal") do |f|
+          = devise_error_messages!
+          .input-group{:style => "margin-bottom: 25px"}
+            %span.input-group-addon
+              %i.glyphicon.glyphicon-user
+            = f.text_field :name, autofocus: true, autocomplete: "off", class: "form-control", placeholder: "Name"
+          .input-group{:style => "margin-bottom: 25px"}
+            %span.input-group-addon
+              %i.glyphicon.glyphicon-envelope
+            = f.email_field :email, autocomplete: "email", class: "form-control", placeholder: "Email"
+          .input-group{:style => "margin-bottom: 25px"}
+            %span.input-group-addon
+              %i.glyphicon.glyphicon-lock
+            = f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "Password"
+          .input-group{:style => "margin-bottom: 25px"}
+            %span.input-group-addon
+              %i.glyphicon.glyphicon-lock
+            = f.password_field :password_confirmation, autocomplete: "off", class: "form-control", placeholder: "Password Confirmation"
+          .input-group{:style => "margin-bottom: 25px"}
+            %span.input-group-addon
+              %i.glyphicon.glyphicon-phone-alt
+            = f.phone_field :phone, autocomplete: "off", class: "form-control", placeholder: "Phone"
+          .input-group{:style => "margin-bottom: 25px"}
+            %span.input-group-addon
+              %i.glyphicon.glyphicon-phone-alt
+            = f.text_field :address, autocomplete: "off", class: "form-control", placeholder: "Address"
+          .input-group{:style => "margin-bottom: 25px"}
+            %span.input-group-addon
+              %i.glyphicon.glyphicon-lock
+            = f.password_field :current_password, autocomplete: "off", class: "form-control", placeholder: "Current Password"
+          .form-group{:style => "margin-top:10px"}
+            / Button
+            .col-sm-12
+              = f.submit "Update", class: "btn btn-success", id: "btn-login"
+          .form-group
+            .col-md-12.control
+              %div{:style => "border-top: 1px solid#888; padding-top:15px; font-size:85%"}
+                Do have an account! #{link_to "Login", new_session_path(resource_name)}
+= link_to "Back", :back

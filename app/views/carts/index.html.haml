@@ -1,0 +1,70 @@
+.container
+  .row
+    .col-sm-12.col-md-10.col-md-offset-1
+      %table.table.table-hover
+        %thead
+          %tr
+            %th Product
+            %th Quantity
+            %th.text-center Price
+            %th.text-center Total
+            %th  
+        %tbody
+          - product_in_carts.each do |product|
+            %tr
+              %td.col-sm-8.col-md-6
+                .media
+                  %a.thumbnail.pull-left{:href => "#"}
+                    = image_tag(product.image, style: "width: 72px; height: 72px;")
+                  .media-body
+                    %h4.media-heading
+                      = link_to product.name, product
+                    %h5.media-heading
+                      by
+                      %a{:href => "#"} Brand name
+                    %span Status:
+                    %span.text-success
+                      %strong In Stock
+              %td.col-sm-1.col-md-1{:style => "text-align: center"}
+                %input#exampleInputEmail1.form-control{:type => "email", :value => "#{@order_cart["#{product.id}"]}"}
+              %td.col-sm-1.col-md-1.text-center
+                %strong
+                  $#{product.price}
+              %td.col-sm-1.col-md-1.text-center
+                %strong
+                  $#{total_price_product product.price, @order_cart["#{product.id}"]}
+              %td.col-sm-1.col-md-1
+                = link_to "Remove", cart_path(product.id), method: :delete, class: 'btn btn-danger sub', remote: true
+          %tr
+            %td  
+            %td  
+            %td  
+            %td
+              %h3 Total
+            %td.text-right
+              %h3
+                %strong
+                  $#{subtotal}
+          %tr
+            %td  
+            %td  
+            %td  
+            %td
+              = link_to root_url, class: "btn btn-default" do
+                %span.glyphicon.glyphicon-shopping-cart
+                Continue Shopping
+            %td
+              = form_for @order, url: {controller: "orders", action: "create"}, remote: true do |f|
+                %p
+                  = f.label :address, "Address"
+                  = f.text_field :address, class: "form_control"
+                %p
+                  = f.label :date_delivery, "Date Delivery"
+                  = f.date_field :date_delivery, class: "form_control"
+                %p
+                  = f.hidden_field :total, value: subtotal.to_i
+                  - if user_signed_in?
+                    = f.hidden_field :user_id, value: current_user.id
+                = f.button type: "submit", class: "btn btn-success" do
+                  Checkout
+                  %span.glyphicon.glyphicon-play

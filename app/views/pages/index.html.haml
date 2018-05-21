@@ -1,0 +1,18 @@
+.search
+  = form_for :search ,url: { controller: "products", action: "search" }, method: :get do |f|
+    .input-group
+      = f.search_field :name_cont, value: "", placeholder: "Search", class: "form-control"
+      %span.input-group-btn
+        = f.button name: "commit", type: "submit", class: "btn btn-primary" do
+          %span.glyphicon.glyphicon-search
+%br
+= search_form_for @search, url: products_path do |f|
+  = f.label :number
+  = select_tag :limit, options_from_collection_for_select(Settings.show_limit, :second, :second, selected: params[:limit] || Settings.show_limit.limit),id: "show-limit", style: "width: 4%"
+  = f.submit "search", class: "btn-info", style: "display: none; margin-right: 10px; "
+.layout
+  %section.inner
+    %ul.grid
+      - @products.each do |product|
+        = render "layouts/product", product: product
+  = paginate @products, theme: 'twitter-bootstrap-3'
