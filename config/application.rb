@@ -37,5 +37,12 @@ module Shop
 	  authentication:       'login',
 	  enable_starttls_auto: true
 	}
+
+    config.to_prepare do
+      Devise::SessionsController.layout "layouts/login"
+      Devise::RegistrationsController.layout "layouts/login"
+      Devise::PasswordsController.layout "layouts/login"
+    end
+
   end
 end
