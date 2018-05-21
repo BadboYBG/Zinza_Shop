@@ -1,0 +1,29 @@
+<div class="search">
+  <%= form_for :search ,url: { controller: "products", action: "search" }, method: :get do |f| %>
+    <div class="input-group">
+      <%= f.search_field :name_cont, value: "", placeholder: "Search", class: "form-control" %>
+      <span class="input-group-btn">
+        <%= f.button name: "commit", type: "submit", class: "btn btn-primary" do %>
+          <span class="glyphicon glyphicon-search"></span>
+        <% end %>
+      </span>
+    </div>
+ <% end %>
+</div>
+<br>
+<%= search_form_for @search, url: products_path do |f|%>
+  <%=f.label :number%>
+  <%= select_tag :limit, options_from_collection_for_select(Settings.show_limit, :second, :second, selected: params[:limit] || Settings.show_limit.limit),id: "show-limit", style: "width: 4%"%>
+  <%= f.submit "search", class: "btn-info", style: "display: none; margin-right: 10px; "%>
+<% end %>
+<div class="layout">
+  <section class="inner">
+    <ul class="grid">
+      <% @products.each do |product| %>
+      	<%= render "layouts/product", product: product %>
+      <% end %>
+
+    </ul>
+  </section>
+   <%= paginate @products, theme: 'twitter-bootstrap-3' %>
+</div>
