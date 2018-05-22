@@ -23,8 +23,9 @@ class OrdersController < ApplicationController
     session[:order_items].each do |key, val|
       product_id = key.to_i
       number = val.to_i
+      price = Product.find_by(id: product_id).price
       order_id = @order.id
-      OrderItem.create(number: number, order_id: order_id, product_id: product_id)
+      OrderItem.create(number: number, price: price, order_id: order_id, product_id: product_id)
     end
   end
 

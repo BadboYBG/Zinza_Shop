@@ -13,20 +13,25 @@ gem "coffee-rails", "~> 4.2"
 gem "config"
 gem "devise"
 gem "faker"
+gem "haml"
 gem "jquery-rails"
 gem "kaminari"       
 gem "letter_opener", :group => :development
 gem "mysql2", ">= 0.3.18", "< 0.6.0"
 gem "puma", "~> 3.7"
 gem "rails", "~> 5.1.6"
-gem "ransack"
 gem "ransack"     
 gem "sass-rails", "~> 5.0"
+gem "shoulda-matchers"
+
+
 gem "turbolinks", "~> 5"
 gem "uglifier", ">= 1.3.0"
-gem 'haml'
 
 group :development, :test do
+	gem "rspec-rails"
+	gem "simplecov", :require => false
+	gem "simplecov-rcov", :require => false
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
 end
 
