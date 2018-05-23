@@ -3,7 +3,7 @@ class OrdersController < ApplicationController
 
 	def create
     @order = Order.new params_order
-    @order.date_order = Time.now
+    #@order.date_order = Time.now
     if @order.save
       create_order_items
       session.delete :order_items
@@ -13,6 +13,11 @@ class OrdersController < ApplicationController
       flash[:danger] = "No product or can't blank address, date delivery"
       redirect_to carts_path
     end
+  end
+
+  def show
+  	@user = current_user
+  	@orders = @user.orders.page(params[:page]).per 6
   end
 
   private

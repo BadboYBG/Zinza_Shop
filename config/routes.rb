@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root 'pages#index'
   get "/contact", to: "pages#contact"
   get "/products/search", to: "products#search"
-  get "/user", to: "pages#show"
+  get "/user", to: "orders#show"
   resources :pages
   resources :categories
   resources :carts

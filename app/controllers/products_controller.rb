@@ -2,7 +2,7 @@ class ProductsController < ApplicationController
   before_action :product_params, only: %i(show)
 
   def index
-    @search = Product.list_product.check_number_product.order(price: :desc).ransack params[:q]
+    @search = Product.list_product.check_number_product.order(price: :desc).ransack params[:search]
     @products = @search.result.page(params[:page]).per params[:limit]
   end
 
@@ -10,7 +10,7 @@ class ProductsController < ApplicationController
 
   def search
     @q = Product.ransack params[:search]
-    @ps = @q.result.page params[:page]
+    @ps = @q.result.page(params[:page]).per 6
   end
 
   private
@@ -18,7 +18,7 @@ class ProductsController < ApplicationController
   def product_params
     @product = Product.find_by id: params[:id]
     if @product.nil?
-      flash[:danger] = "Nou found"
+      flash[:danger] = "Not found"
       redirect_to root_path	
     end
   end
