@@ -1,9 +1,8 @@
 class ApplicationController < ActionController::Base
-  #layout :layout_by_resource
 
   protect_from_forgery with: :exception
 
-   include CartsHelper
+  include CartsHelper
 
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :menu
@@ -30,14 +29,4 @@ class ApplicationController < ActionController::Base
     end
   end
 
-
-  # private
-
-  # def layout_by_resource
-  #   if devise_controller?
-  #     "layouts/login"
-  #   else
-  #     "application"
-  #   end
-  # end
 end
