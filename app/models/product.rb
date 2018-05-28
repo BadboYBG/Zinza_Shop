@@ -8,6 +8,6 @@ class Product < ApplicationRecord
   validates :detail, presence: true
   validates :image, presence: true
 
-  scope :list_product, ->{select :id, :name, :price, :image, :sale, :category_id}
-  scope :check_number_product, ->{where "number > 0" }
+  scope :list_product, -> { select :id, :name, :price, :image, :sale, :category_id }
+  scope :check_number_product, -> { where 'number > 0' }
 end

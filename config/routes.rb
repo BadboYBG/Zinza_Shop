@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  mount Ckeditor::Engine => '/ckeditor'
+  devise_for :admins
+  mount RailsAdmin::Engine => '/admin', as: :rails_admin
   root 'pages#index'
   get "/contact", to: "pages#contact"
   get "/products/search", to: "products#search"
@@ -13,6 +16,6 @@ Rails.application.routes.draw do
   concern :paginatable do
     get '(page/:page)', action: :index, on: :collection, as: ''
   end
-
+  
   resources :products, concerns: :paginatable
 end

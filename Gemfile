@@ -24,7 +24,10 @@ gem "sass-rails", "~> 5.0"
 gem "turbolinks", "~> 5"
 gem "uglifier", ">= 1.3.0"
 gem "rubocop", "~> 0.46.0", require: false
-
+gem "rails_admin", "~> 1.2"
+gem "ckeditor"
+gem "paperclip"
+gem "aws-sdk"
 group :development, :test do
   gem "fabrication"
   gem "faker"

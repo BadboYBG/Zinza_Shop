@@ -1,5 +1,4 @@
 module RequestSpecHelper
-
   include Warden::Test::Helpers
 
   def self.included(base)
@@ -8,7 +7,7 @@ module RequestSpecHelper
   end
 
   def sign_in(resource)
-    login_as(resource, scope: warden_scope(resource))
+    login_as resource, scope: warden_scope(resource)
   end
 
   def sign_out(resource)
@@ -20,5 +19,4 @@ module RequestSpecHelper
   def warden_scope(resource)
     resource.class.name.underscore.to_sym
   end
-
 end

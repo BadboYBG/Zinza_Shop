@@ -1,23 +1,23 @@
 class OrdersController < ApplicationController
   before_action :check_login
 
-	def create
+  def create
     @order = Order.new params_order
-    #@order.date_order = Time.now
+    # @order.date_order = Time.now
     if @order.save
       create_order_items
       session.delete :order_items
       redirect_to root_url
-      flash[:success] = "Buy success!"
+      flash[:success] = 'Buy success!'
     else
-      flash[:danger] = "No product or can't blank address, date delivery"
+      flash[:danger] = 'No product or can\'t blank address, date delivery'
       redirect_to carts_path
     end
   end
 
   def show
-  	@user = current_user
-  	@orders = @user.orders.page(params[:page]).per 6
+    @user = current_user
+    @orders = @user.orders.page(params[:page]).per 6
   end
 
   private
@@ -35,6 +35,4 @@ class OrdersController < ApplicationController
       OrderItem.create(number: number, price: price, order_id: order_id, product_id: product_id)
     end
   end
-
-  
 end

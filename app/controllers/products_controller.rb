@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :product_params, only: %i(show)
+  before_action :product_params, only: %i[show]
 
   def index
     @search = Product.list_product.check_number_product.order(price: :desc).ransack params[:search]
@@ -17,10 +17,8 @@ class ProductsController < ApplicationController
 
   def product_params
     @product = Product.find_by id: params[:id]
-    if @product.nil?
-      flash[:danger] = "Not found"
-      redirect_to root_path	
-    end
+    return unless @product.nil?
+    flash[:danger] = 'Not found'
+    redirect_to root_path
   end
-  
 end

@@ -1,5 +1,4 @@
 class ApplicationController < ActionController::Base
-
   protect_from_forgery with: :exception
 
   include CartsHelper
@@ -11,22 +10,19 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :phone, :address])
+    devise_parameter_sanitizer.permit(:sign_up, keys: %i[name phone address])
   end
 
   def menu
-  	@categories = Category.all
+    @categories = Category.all
   end
 
   def create_session
-    session[:order_items] ||= Hash.new
-    session[:time] ||= Hash.new
-  end
-  
-  def check_login
-    if !user_signed_in?
-      redirect_to new_user_session_path
-    end
+    session[:order_items] ||= {}
+    session[:time] ||= {}
   end
 
+  def check_login
+    redirect_to new_user_session_path unless user_signed_in?
+  end
 end

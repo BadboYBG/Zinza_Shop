@@ -1,3 +1,3 @@
-Fabricator :category do 
-	name {Faker::Name.name}
+Fabricator :category do
+  name { Faker::Name.name }
 end
