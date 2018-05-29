@@ -4,10 +4,10 @@
       %table.table.table-hover
         %thead
           %tr
-            %th Product
-            %th Quantity
-            %th.text-center Price
-            %th.text-center Total
+            %th= t(".product")
+            %th= t(".quantity")
+            %th.text-center= t(".price")
+            %th.text-center= t(".total")
             %th  
         %tbody
           - product_in_carts.each do |product|
@@ -21,10 +21,10 @@
                       = link_to product.name, product
                     %h5.media-heading
                       by
-                      %a{:href => "#"} Brand name
-                    %span Status:
+                      = link_to t(".brand_name"), "#"
+                    %span= t(".status")
                     %span.text-success
-                      %strong In Stock
+                      %strong= t("in_stock")
               %td.col-sm-1.col-md-1{:style => "text-align: center"}
                 %input#exampleInputEmail1.form-control{:type => "email", :value => "#{@order_cart["#{product.id}"]}"}
               %td.col-sm-1.col-md-1.text-center
@@ -40,7 +40,7 @@
             %td  
             %td  
             %td
-              %h3 Total
+              %h3= t(".total")
             %td.text-right
               %h3
                 %strong
@@ -52,7 +52,7 @@
             %td
               = link_to root_url, class: "btn btn-default" do
                 %span.glyphicon.glyphicon-shopping-cart
-                Continue Shopping
+                #{t(".continue_shopping")}
             %td
               = form_for @order, url: {controller: "orders", action: "create"}, remote: true do |f|
                 %p
@@ -66,5 +66,5 @@
                   - if user_signed_in?
                     = f.hidden_field :user_id, value: current_user.id
                 = f.button type: "submit", class: "btn btn-success" do
-                  Checkout
+                  #{t(".check_out")}
                   %span.glyphicon.glyphicon-play

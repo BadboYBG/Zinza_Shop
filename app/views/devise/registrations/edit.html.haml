@@ -1,4 +1,4 @@
-%h1 Edit
+%h1= t('.title')
 %link#bootstrap-css{:href => "//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css", :rel => "stylesheet"}/
 %script{:src => "//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"}
 %script{:src => "//code.jquery.com/jquery-1.11.1.min.js"}
@@ -6,8 +6,8 @@
   #loginbox.mainbox.col-md-6.col-md-offset-3.col-sm-8.col-sm-offset-2{:style => "margin-top:50px;"}
     .panel.panel-info
       .panel-heading
-        .panel-title Sign Up
-        %div{:style => "float:right; font-size: 80%; position: relative; top:-10px"}= link_to "Forgot your password?", new_password_path(resource_name)
+        .panel-title= t('layouts._header.sign_up')
+        %div{:style => "float:right; font-size: 80%; position: relative; top:-10px"}= link_to t('devise.passwords.new.title'), new_password_path(resource_name)
       .panel-body{:style => "padding-top:30px"}
         #login-alert.alert.alert-danger.col-sm-12{:style => "display:none"}
         = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }, class: "form-horizontal") do |f|
@@ -15,19 +15,19 @@
           .input-group{:style => "margin-bottom: 25px"}
             %span.input-group-addon
               %i.glyphicon.glyphicon-user
-            = f.text_field :name, autofocus: true, autocomplete: "off", class: "form-control", placeholder: "Name"
+            = f.text_field :name, autofocus: true, autocomplete: "off", class: "form-control", placeholder: t('forms.name')
           .input-group{:style => "margin-bottom: 25px"}
             %span.input-group-addon
               %i.glyphicon.glyphicon-envelope
-            = f.email_field :email, autocomplete: "email", class: "form-control", placeholder: "Email"
+            = f.email_field :email, autocomplete: "email", class: "form-control", placeholder: t('.forms.email')
           .input-group{:style => "margin-bottom: 25px"}
             %span.input-group-addon
               %i.glyphicon.glyphicon-lock
-            = f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "Password"
+            = f.password_field :password, autocomplete: "off", class: "form-control", placeholder: t('.forms.password')
           .input-group{:style => "margin-bottom: 25px"}
             %span.input-group-addon
               %i.glyphicon.glyphicon-lock
-            = f.password_field :password_confirmation, autocomplete: "off", class: "form-control", placeholder: "Password Confirmation"
+            = f.password_field :password_confirmation, autocomplete: "off", class: "form-control", placeholder: t('.forms.password_confirmation')
           .input-group{:style => "margin-bottom: 25px"}
             %span.input-group-addon
               %i.glyphicon.glyphicon-phone-alt
@@ -39,13 +39,13 @@
           .input-group{:style => "margin-bottom: 25px"}
             %span.input-group-addon
               %i.glyphicon.glyphicon-lock
-            = f.password_field :current_password, autocomplete: "off", class: "form-control", placeholder: "Current Password"
+            = f.password_field :current_password, autocomplete: "off", class: "form-control", placeholder: t('forms.current_password')
           .form-group{:style => "margin-top:10px"}
             / Button
             .col-sm-12
-              = f.submit "Update", class: "btn btn-success", id: "btn-login"
+              = f.submit t('.update'), class: "btn btn-success", id: "btn-login"
           .form-group
             .col-md-12.control
               %div{:style => "border-top: 1px solid#888; padding-top:15px; font-size:85%"}
-                Do have an account! #{link_to "Login", new_session_path(resource_name)}
-= link_to "Back", :back
+                #{t('.content')}
+                #{link_to t('.forms.login'), new_session_path(resource_name)}

@@ -6,7 +6,7 @@
   #loginbox.mainbox.col-md-6.col-md-offset-3.col-sm-8.col-sm-offset-2{:style => "margin-top:50px;"}
     .panel.panel-info
       .panel-heading
-        .panel-title Sign Up
+        .panel-title= t('forms.sign_up')
         %div{:style => "float:right; font-size: 80%; position: relative; top:-10px"}= link_to "Forgot your password?", new_password_path(resource_name)
       .panel-body{:style => "padding-top:30px"}
         #login-alert.alert.alert-danger.col-sm-12{:style => "display:none"}
@@ -15,33 +15,33 @@
           .input-group{:style => "margin-bottom: 25px"}
             %span.input-group-addon
               %i.glyphicon.glyphicon-user
-            = f.text_field :name, autofocus: true, autocomplete: "off", class: "form-control", placeholder: "Name"
+            = f.text_field :name, autofocus: true, autocomplete: "off", class: "form-control", placeholder: t('forms.name')
           .input-group{:style => "margin-bottom: 25px"}
             %span.input-group-addon
               %i.glyphicon.glyphicon-envelope
-            = f.email_field :email, autocomplete: "email", class: "form-control", placeholder: "Email"
+            = f.email_field :email, autocomplete: "email", class: "form-control", placeholder: t('forms.email')
           .input-group{:style => "margin-bottom: 25px"}
             %span.input-group-addon
               %i.glyphicon.glyphicon-lock
-            = f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "Password"
+            = f.password_field :password, autocomplete: "off", class: "form-control", placeholder: t('forms.password')
           .input-group{:style => "margin-bottom: 25px"}
             %span.input-group-addon
               %i.glyphicon.glyphicon-lock
-            = f.password_field :password_confirmation, autocomplete: "off", class: "form-control", placeholder: "Password Confirmation"
+            = f.password_field :password_confirmation, autocomplete: "off", class: "form-control", placeholder: t('forms.password_confirmation')
           .input-group{:style => "margin-bottom: 25px"}
             %span.input-group-addon
               %i.glyphicon.glyphicon-phone-alt
-            = f.phone_field :phone, autocomplete: "off", class: "form-control", placeholder: "Phone"
+            = f.phone_field :phone, autocomplete: "off", class: "form-control", placeholder: t('forms.phone')
           .input-group{:style => "margin-bottom: 25px"}
             %span.input-group-addon
               %i.glyphicon.glyphicon-phone-alt
-            = f.text_field :address, autocomplete: "off", class: "form-control", placeholder: "Address"
+            = f.text_field :address, autocomplete: "off", class: "form-control", placeholder: t('forms.address')
           .form-group{:style => "margin-top:10px"}
             / Button
             .col-sm-12
-              = f.submit "Sign Up", class: "btn btn-success", id: "btn-login"
+              = f.submit t('forms.sign_up'), class: "btn btn-success", id: "btn-login"
           .form-group
             .col-md-12.control
               %div{:style => "border-top: 1px solid#888; padding-top:15px; font-size:85%"}
-                Do have an account!
-                \#{link_to "Login", new_session_path(resource_name)}
+                #{t('.content')}
+                #{link_to "Login", new_session_path(resource_name)}

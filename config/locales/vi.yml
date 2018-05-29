@@ -1,48 +1,48 @@
 
-en:
+vi:
 
   myShop: "Shop Clothes"
   locale:
     vi: "VietNamese"
     en: "English"
 
-  buttons:
-    add_to_cart: "ADD TO CART"
-    edit: "Edit"
+  buttons: 
+    add_to_cart: "Thêm vào giỏ hàng"
+    edit: "Chỉnh sửa"
   
   forms:
-    name: "Name"
+    name: "Tên"
     email: "Email"
-    password: "Password"
-    password_confirmation: "Password Confirmation"
-    current_password: "Current Password"
-    phone: "Phone"
-    address: "Address"
-    update: "Update"
-    login: "Login"
-    sign_up: "Sign up"
-    sign_in: "Sign In"
+    password: "Mật khẩu"
+    password_confirmation: "Nhập lại mật khẩu"
+    current_password: "Mật khẩu hiện tại"
+    phone: "Điện thoại"
+    address: "Địa chỉ"
+    update: "Cập nhật"
+    login: "Đăng nhập"
+    sign_up: "Đăng kí"
+    sign_in: "Đăng nhập"
 
   carts:
     index:
-      product: "Product"
-      quantity: "Quantity"
-      total: "Total"
-      price: "Price"
-      brand_name: "Brand name"
-      status: "Status"
-      in_stock: "In Stock"
-      continue_shopping: "Continue Shopping"
-      check_out: "Check out"
+      product: "Sản phẩm"
+      quantity: "Số lượng"
+      total: "Tổng"
+      price: "Gía"
+      brand_name: "Thương hiệu"
+      status: "Trạng thái"
+      in_stock: "Còn hàng"
+      continue_shopping: "Tiếp tục mua hàng"
+      check_out: "Thanh toán"
 
   categories:
     show:
-      no_product: "No Product"
+      no_product: "Không có sản phẩm"
 
   devise:
     mailer:
       confirmation_instructions:
-        welcome: "Welcome"
+        welcome: "Xin chào"
         confirmation_my_account: "Confirmation my account"
         content: "You can confirm your account email through the link below:"
 
@@ -70,75 +70,73 @@ en:
     
     passwords:
       edit:
-        title: "Change your password"
-        new_password: "New password"
-        confirm_new_password: "Confirm new password"
-        change_my_password: "Change my password" 
+        title: "Thay đổi mật khẩu"
+        new_password: "Mật khẩu mới"
+        confirm_new_password: "Xác thực mật khẩu"
+        change_my_password: "Thay đổi mật khẩu của bạn" 
       
       new:
-        title: "Forgot your password?"
-        button: "Send me reset password instructions"
+        title: "Bạn quên mật khẩu?"
+        button: "Gửi cho tôi hướng dẫn đặt lại mật khẩu"
     
     registrations:
       edit:
-        title: "Edit"
-        content: "Do have an account!"
+        title: "Chỉnh sửa"
+        content: "Bạn đã có mật khẩu!"
       new:
-        title: "New"
-        content: "Do have an account!"
+        title: "Tạo mới"
+        content: "Bạn chưa có tài khoản!"
 
     sessions:
       new:
-        content: "Don't have an account!"
+        content: "Bạn chưa có tài khoản !"
 
     shared:
       _links:
-        registrations: "registrations"
-        confirmations: "confirmations"
-        content1: "Didn't receive confirmation instructions?"
-        content2: "Didn't receive unlock instructions?"
+        content1: "Không nhận được hướng dẫn xác nhận?"
+        content2: "Không nhận được hướng dẫn mở khóa?"
 
     unlocks:
       new:
-        title: "Resend unlock instructions"
-        button: "Resend unlock instructions"
+        title: "Gửi lại hướng dẫn mở khóa"
+        button: "Gửi lại hướng dẫn mở khóa"
   
   layouts:
     _header:
-      hello: "Hello"
-      profile: "Profile"
-      settings: "Settings"
-      sign_up: "Sign up"
-      log_out: "Log out"
-      log_in: "Login"
+      hello: "Xin chào"
+      profile: "Hồ sơ"
+      settings: "Cài đặt"
+      sign_up: "Đăng nhập"
+      log_out: "Đăng xuất"
+      log_in: "Đăng nhập"
 
     _footer:
-      about: "About"
-      contact: "Contact"
+      about: "Giới thiệu"
+      contact: "Liên hệ"
 
   orders:
     show:
-      id: "ID"
-      date_registered: "Date Registered"
-      total: "Total"
-      address: "Address"
-      status: "Status"
-      active: "Active"
-      pending: "Pending"
+      id: "MÃ đơn hàng"
+      date_registered: "Ngày đặt hàng"
+      total: "Tổng tiền"
+      address: "Địa chỉ"
+      status: "Trạng thái"
+      active: "Hoàn tất"
+      pending: "Đang chờ xử lý"
 
   pages:
     contact:
-      title: "Contact" 
+      title: "Liên hệ" 
 
     index: 
    
   products:
     index:
-      title: "All product"
+      title: "Tất cả sản phẩm"
     search:
-      title: "Search"
+      title: "Tìm kiếm"
     show:
-      current_price: "Current price: "
+      current_price: "Gía hiện tại: "
       s: "S"
       m: "M"
       l: "L"
@@ -146,8 +144,8 @@ en:
 
   shared:
     _error_messages:
-      the_form: "The form contains"
-      error: "error"
+      the_form: "Biểu mẫu có chứa"
+      error: "lỗi"
 
   views:
     pagination:

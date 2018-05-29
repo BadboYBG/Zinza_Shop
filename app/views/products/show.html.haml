@@ -13,29 +13,25 @@
             %span.fa.fa-star.checked
             %span.fa.fa-star
             %span.fa.fa-star
-          %span.review-no 41 reviews
+          %span.review-no 
         %p.product-description= @product.detail
-        %h4.price
-          current price:
-          %span
+        %h4
+          #{t('.current price')}
+          %span.price
             $#{@product.price}
-        %p.vote
-          %strong 91%
-          of buyers enjoyed this product!
-          %strong (87 votes)
         %h5.sizes
           sizes:
-          %span.size{"data-toggle" => "tooltip", :title => "small"} s
-          %span.size{"data-toggle" => "tooltip", :title => "medium"} m
-          %span.size{"data-toggle" => "tooltip", :title => "large"} l
-          %span.size{"data-toggle" => "tooltip", :title => "xtra large"} xl
+          %span.size{"data-toggle" => "tooltip", :title => "small"}= t('.s')
+          %span.size{"data-toggle" => "tooltip", :title => "medium"}= t('.m')
+          %span.size{"data-toggle" => "tooltip", :title => "large"}= t('.l')
+          %span.size{"data-toggle" => "tooltip", :title => "xtra large"}= t('.xl')
         %h5.colors
           colors:
-          %span.color.orange.not-available{"data-toggle" => "tooltip", :title => "Not In store"}
+          %span.color.orange.not-available{"data-toggle" => "tooltip"}
           %span.color.green
           %span.color.blue
         .action
           = form_for :session, url: {controller: "carts", action: "create"}, remote: true do |f|
             = f.hidden_field :product_id, value: @product.id
-            = f.button "Add to cart", class: "add-to-cart btn btn-default", onclick: "changeCart()", type: "submit"
+            = f.button t('buttons.add_to_cart'), class: "add-to-cart btn btn-default", onclick: "changeCart()", type: "submit"
            

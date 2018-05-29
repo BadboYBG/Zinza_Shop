@@ -1,4 +1,4 @@
-%h1 ALL PRODUCT
+%h1= t('.title')
 = search_form_for @search, url: products_path do |f|
   = f.label :number
   = select_tag :limit, options_from_collection_for_select(Settings.show_limit, :second, :second, selected: params[:limit] || Settings.show_limit.limit),id: "show-limit", style: "width: 4%"

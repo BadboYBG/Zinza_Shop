@@ -29,20 +29,20 @@ module Shop
     config.generators.system_tests = nil
 
     ActionMailer::Base.smtp_settings = {
-	  address:              'smtp.gmail.com',
-	  port:                 587,
-	  domain:               'mail.google.com',
-	  user_name:            ENV['minhnv0110@gmail.com'],
-	  password:             ENV['van.minh'],
-	  authentication:       'login',
-	  enable_starttls_auto: true
-	}
+    address:              'smtp.gmail.com',
+    port:                 587,
+    domain:               'mail.google.com',
+    user_name:            ENV['minhnv0110@gmail.com'],
+    password:             ENV['van.minh'],
+    authentication:       'login',
+    enable_starttls_auto: true
+    }
 
     config.to_prepare do
       Devise::SessionsController.layout "layouts/login"
       Devise::RegistrationsController.layout "layouts/login"
       Devise::PasswordsController.layout "layouts/login"
     end
-
+    config.i18n.default_locale = :en
   end
 end

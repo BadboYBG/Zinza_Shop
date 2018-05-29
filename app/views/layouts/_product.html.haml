@@ -20,4 +20,4 @@
         .pnl-tocart
           = form_for :session, url: {controller: "carts", action: "create"}, remote: true do |f|
             = f.hidden_field :product_id, value: product.id
-            = f.submit "Add to cart", class: "add-to-cart btn btn-default", onclick: "changeCart()"
+            = f.submit t("buttons.add_to_cart"), class: "add-to-cart btn btn-default", onclick: "changeCart()"

@@ -6,7 +6,7 @@
       .col-md-8.col-xs-12.col-sm-6.col-lg-8
         .container{:style => "border-bottom:1px solid black"}
           %h2= @user.name
-        %hr/
+        %hr
         %ul.container.details
           %li
             %p
@@ -23,7 +23,7 @@
           %li
             %p
               %span.glyphicon.glyphicon-new-window.one{:style => "width:50px;"}
-              = link_to "Edit", "#"
+              = link_to t('buttons.edit'), "#"
 
   .row
   .span5
@@ -31,11 +31,11 @@
       %thead
         %tr
           %th #
-          %th Order ID
-          %th Date registered
-          %th Total
-          %th Address
-          %th Status
+          %th= t('.id')
+          %th= t('.date_registered')
+          %th= t('.total')
+          %th= t('.address')
+          %th= t('.status')
       %tbody
         - @orders.each_with_index do |order, index|
           %tr
@@ -46,7 +46,7 @@
             %td= order.address
             %td
               - if order.status == "pending"
-                %span.label.label-warning Pending
+                %span.label.label-warning= = t('.pending')
               - else
-                %span.label.label-success Active
+                %span.label.label-success= t('.active')
         
