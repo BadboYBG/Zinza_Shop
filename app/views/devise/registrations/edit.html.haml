@@ -10,7 +10,7 @@
         %div{:style => "float:right; font-size: 80%; position: relative; top:-10px"}= link_to t('devise.passwords.new.title'), new_password_path(resource_name)
       .panel-body{:style => "padding-top:30px"}
         #login-alert.alert.alert-danger.col-sm-12{:style => "display:none"}
-        = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }, class: "form-horizontal") do |f|
+        = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }, class: "form-horizontal", html: {multipart: true}) do |f|
           = devise_error_messages!
           .input-group{:style => "margin-bottom: 25px"}
             %span.input-group-addon
@@ -40,6 +40,10 @@
             %span.input-group-addon
               %i.glyphicon.glyphicon-lock
             = f.password_field :current_password, autocomplete: "off", class: "form-control", placeholder: t('forms.current_password')
+          .input-group{:style => "margin-bottom: 25px"}
+            %span.input-group-addon
+              %i.glyphicon.glyphicon-phone-alt
+            = f.file_field :avatar
           .form-group{:style => "margin-top:10px"}
             / Button
             .col-sm-12

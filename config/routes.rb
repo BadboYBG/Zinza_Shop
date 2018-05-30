@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
 
-  mount Ckeditor::Engine => '/ckeditor'
-  devise_for :admins
-  mount RailsAdmin::Engine => '/admin', as: :rails_admin
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
   get "/contact", to: "pages#contact"
   get "/products/search", to: "products#search"
   get "/user", to: "orders#show"

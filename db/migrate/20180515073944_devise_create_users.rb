@@ -6,7 +6,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.1]
       t.string :name
       t.string :phone
       t.string :address
-      t.string :image
+      t.string :avatar, default: "/uploads/user/avatar/default/avatar.png"
       ## Database authenticatable
       t.string :email,              null: false, default: ''
       t.string :encrypted_password, null: false, default: ''

@@ -4,13 +4,12 @@ class User < ApplicationRecord
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
   validates :address, presence: true
   validates :name, presence: true
+  mount_uploader :avatar, ImageUploader
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
   validates :phone, presence: true, format: { with: VALID_PHONE_REGEX }
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
-  rails_admin do
-    visible false # or visible { some block }
-  end
+
 end

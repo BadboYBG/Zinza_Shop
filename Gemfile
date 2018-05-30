@@ -7,27 +7,28 @@ end
 
 
 gem "bcrypt", "~> 3.1.7"
-gem "bootstrap-kaminari-views" 
+gem "bootstrap-kaminari-views"
 gem "bootstrap-sass", "3.3.7"
 gem "coffee-rails", "~> 4.2"
 gem "config"
 gem "devise"
 gem "haml"
 gem "jquery-rails"
-gem "kaminari"       
+gem "kaminari"
 gem "letter_opener", :group => :development
 gem "mysql2", ">= 0.3.18", "< 0.6.0"
 gem "puma", "~> 3.7"
 gem "rails", "~> 5.1.6"
-gem "ransack"     
+gem "ransack"
 gem "sass-rails", "~> 5.0"
 gem "turbolinks", "~> 5"
 gem "uglifier", ">= 1.3.0"
 gem "rubocop", "~> 0.46.0", require: false
-gem "rails_admin", "~> 1.2"
+gem "activeadmin", "~> 1.2"
 gem "ckeditor"
 gem "paperclip"
-gem "aws-sdk"
+gem 'active_admin_flat_skin'
+gem 'carrierwave'
 group :development, :test do
   gem "fabrication"
   gem "faker"
