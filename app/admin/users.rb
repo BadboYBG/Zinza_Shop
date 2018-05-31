@@ -10,10 +10,10 @@ ActiveAdmin.register User do
   end
 
   show do
-    panel "User Details" do
+    panel 'User Details' do
       attributes_table_for user do
-        row "Avatar" do |post|
-          image_tag post.avatar_url, alt: "Avatar"
+        row 'Avatar' do |post|
+          image_tag post.avatar_url, alt: 'Avatar'
         end
         row :name
         row :phone

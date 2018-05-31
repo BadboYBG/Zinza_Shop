@@ -1,0 +1,44 @@
+= link_to "New", new_product_path
+.container
+  .row
+    .col-sm-12.col-md-10.col-md-offset-1
+      %table.table.table-hover
+        %thead
+          %tr
+            %th= t(".product")
+            %th= t(".number")
+            %th.text-center= t(".price")
+            %th.text-center= t(".sale")
+            %th.text-center= "Created at"
+            %th  
+        %tbody
+          - @products.each do |product|
+            %tr
+              %td.col-sm-4.col-md-3
+                .media
+                  %a.thumbnail.pull-left{:href => "#"}
+                    = image_tag(product.image, style: "width: 72px; height: 72px;")
+                  .media-body
+                    %h4.media-heading
+                      = link_to product.name, product
+                    %h5.media-heading
+                      by
+                      = link_to current_user.name, "#"
+                    %span= t(".status")
+                    %span.text-success
+                      %strong= t("in_stock")
+              %td.col-sm-1.col-md-1.text-center
+                %strong
+                  #{product.number}
+              %td.col-sm-1.col-md-1.text-center
+                %strong
+                  $ #{product.price}
+              %td.col-sm-1.col-md-1.text-center
+                %strong
+                  #{product.sale} %
+              %td.col-sm-1.col-md-1.text-center
+                %strong
+                  #{product.created_at}
+              %td.col-sm-1.col-md-1
+                = link_to "Remove", product_path(product.id), method: :delete, class: 'btn btn-danger sub', remote: true
+        = paginate @products, theme: 'twitter-bootstrap-3'

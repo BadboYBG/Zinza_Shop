@@ -6,11 +6,9 @@ class CartsController < ApplicationController
 
   def create
     @id_product = params[:session][:product_id]
-    if @id_product.present?
-      add_carts @id_product
-      flash[:success] = 'add cart success'
-    end
-    flash[:danger] = 'Error Cart' if @id_product.blank?
+    return flash[:danger] = 'Error Cart' if @id_product.blank?
+    add_carts @id_product
+    flash[:success] = 'add cart success'
   end
 
   def update

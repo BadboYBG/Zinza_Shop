@@ -10,8 +10,9 @@ Category.create(name: 'Scarf')
     price: n * 1000,
     sale: 2,
     number: 12,
-    image: "minh.jpg",
+    image: 'minh.jpg',
     category_id: Faker::Number.between(1, 5),
+    user_id: 1,
     detail: Faker::ChuckNorris.fact
   )
 end

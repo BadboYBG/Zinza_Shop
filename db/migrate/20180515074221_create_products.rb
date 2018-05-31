@@ -8,6 +8,7 @@ class CreateProducts < ActiveRecord::Migration[5.1]
       t.string :detail
       t.string :image
       t.references :category, index: true, foreign_key: true
+      t.references :user, index: true, foreign_key: true
 
       t.timestamps
     end

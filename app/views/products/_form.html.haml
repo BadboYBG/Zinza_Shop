@@ -1,0 +1,37 @@
+.container
+  #loginbox.mainbox.col-md-6.col-md-offset-3.col-sm-8.col-sm-offset-2{:style => "margin-top:50px;"}
+    .panel.panel-info
+      .panel-heading
+        = form_for product, html: {multipart: true} do |f|
+          = f.text_field :user_id, type: "hidden", value: current_user.id
+          .input-group{:style => "margin-bottom: 25px"}
+            %span.input-group-addon
+              %i.glyphicon.glyphicon-user
+            = f.text_field :name, autofocus: true, autocomplete: "off", class: "form-control", placeholder: t('forms.name')
+          .input-group{:style => "margin-bottom: 25px"}
+            %span.input-group-addon
+              %i.glyphicon.glyphicon-user
+            = f.number_field :price, autofocus: true, autocomplete: "off", class: "form-control", placeholder: t('forms.name')
+          .input-group{:style => "margin-bottom: 25px"}
+            %span.input-group-addon
+              %i.glyphicon.glyphicon-user
+            = f.number_field :sale, autofocus: true, autocomplete: "off", class: "form-control", placeholder: t('forms.name')
+          .input-group{:style => "margin-bottom: 25px"}
+            %span.input-group-addon
+              %i.glyphicon.glyphicon-user
+            = f.number_field :number, autofocus: true, autocomplete: "off", class: "form-control", placeholder: t('forms.name')
+          .input-group{:style => "margin-bottom: 25px"}
+            %span.input-group-addon
+              %i.glyphicon.glyphicon-user
+                = f.collection_select(:category_id, Category.all, :id, :name_with_initial, prompt: true,autofocus: true, autocomplete: "off", class: "form-control")
+          .input-group{:style => "margin-bottom: 25px"}
+            %span.input-group-addon
+              %i.glyphicon.glyphicon-user
+            = f.file_field :image, accept: "image/jpeg,image/gif,image/png"
+          .input-group{:style => "margin-bottom: 25px"}
+            %span.input-group-addon
+              %i.glyphicon.glyphicon-user
+            = f.number_field :detail, autofocus: true, autocomplete: "off", class: "form-control", placeholder: t('forms.name')
+          .form-group{:style => "margin-top:10px"}
+            .col-sm-12
+              = f.submit t('forms.sign_up'), class: "btn btn-success", id: "btn-login"

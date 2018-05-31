@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get "/contact", to: "pages#contact"
   get "/products/search", to: "products#search"
   get "/user", to: "orders#show"
+  get "/mylist", to: "products#mylist"
 
   devise_for :users, controllers:{ registrantions: "registrantions"}
   concern :paginatable do

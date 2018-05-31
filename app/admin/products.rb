@@ -1,5 +1,5 @@
 ActiveAdmin.register Product do
-  permit_params :name, :price, :sale, :number, :detail, :image, :category_id
+  permit_params :name, :price, :sale, :number, :detail, :image, :category_id, :user_id
 
   index do
     column :name
@@ -8,16 +8,16 @@ ActiveAdmin.register Product do
     column :number
     column :image
     column 'Category' do |product|
-      product.category.present? ? product.category.name : content_tag(:span, "no category yet")
+      product.category.present? ? product.category.name : content_tag(:span, 'no category yet')
     end
     actions
   end
 
   show do
-    panel "User Details" do
+    panel 'User Details' do
       attributes_table_for product do
-        row "Avatar" do |post|
-          image_tag post.image_url, alt: "Image", style: "height=42; width=42"
+        row 'Avatar' do |post|
+          image_tag post.image_url, alt: 'Image'
         end
         row :name
         row :price
@@ -32,8 +32,7 @@ ActiveAdmin.register Product do
   end
 
   filter :name
-  filter :category, label: 'Category', as: :select,
-  collection: proc { Category.distinct.pluck :name, :id }
+  filter :category, label: 'Category', as: :select, collection: proc { Category.distinct.pluck :name, :id }
 
   # form html: { multipart: true } do |f|
   # end

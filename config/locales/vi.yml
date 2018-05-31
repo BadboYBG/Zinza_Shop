@@ -6,10 +6,10 @@ vi:
     vi: "VietNamese"
     en: "English"
 
-  buttons: 
+  buttons:
     add_to_cart: "Thêm vào giỏ hàng"
     edit: "Chỉnh sửa"
-  
+
   forms:
     name: "Tên"
     email: "Email"
@@ -54,31 +54,31 @@ vi:
       password_change:
         hello: "Hello"
         content: "We're contacting you to notify you that your password has been changed."
-      
+
       reset_password_instructions:
         hello: "Hello"
         change_my_password: "Change my password"
         content1: "Someone has requested a link to change your password. You can do this through the link below."
         content2: "If you didn't request this, please ignore this email."
         content3: "Your password won't change until you access the link above and create a new one."
-      
+
       unlock_instructions:
         hello: "Hello"
         unlock_my_account: "Unlock my account"
         content1: "Your account has been locked due to an excessive number of unsuccessful sign in attempts."
         content2: "Click the link below to unlock your account:"
-    
+
     passwords:
       edit:
         title: "Thay đổi mật khẩu"
         new_password: "Mật khẩu mới"
         confirm_new_password: "Xác thực mật khẩu"
-        change_my_password: "Thay đổi mật khẩu của bạn" 
-      
+        change_my_password: "Thay đổi mật khẩu của bạn"
+
       new:
         title: "Bạn quên mật khẩu?"
         button: "Gửi cho tôi hướng dẫn đặt lại mật khẩu"
-    
+
     registrations:
       edit:
         title: "Chỉnh sửa"
@@ -100,7 +100,7 @@ vi:
       new:
         title: "Gửi lại hướng dẫn mở khóa"
         button: "Gửi lại hướng dẫn mở khóa"
-  
+
   layouts:
     _header:
       hello: "Xin chào"
@@ -109,6 +109,7 @@ vi:
       sign_up: "Đăng nhập"
       log_out: "Đăng xuất"
       log_in: "Đăng nhập"
+      my_list: "sản phẩm"
 
     _footer:
       about: "Giới thiệu"
@@ -126,10 +127,10 @@ vi:
 
   pages:
     contact:
-      title: "Liên hệ" 
+      title: "Liên hệ"
 
-    index: 
-   
+    index:
+
   products:
     index:
       title: "Tất cả sản phẩm"

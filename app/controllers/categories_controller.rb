@@ -1,6 +1,8 @@
 class CategoriesController < ApplicationController
   before_action :category_params
+
   def index; end
+
   def show
     @products = @category.products.page(params[:page]).per 6
   end

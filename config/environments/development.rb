@@ -54,4 +54,16 @@ Rails.application.configure do
 
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
   config.action_mailer.delivery_method = :letter_opener
+  # config.after_initialize do
+  #   Bullet.enable = true
+  #   Bullet.alert = true
+  #   Bullet.bullet_logger = true
+  #   Bullet.console = true
+  #   # Bullet.growl = true
+  #   Bullet.rails_logger = true
+  #   Bullet.add_footer = true
+  #   Bullet.raise = true # raise an error if n+1 query occurs
+  #   Bullet.unused_eager_loading_enable = false
+  # end
+
 end
