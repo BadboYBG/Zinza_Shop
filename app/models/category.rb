@@ -4,7 +4,6 @@ class Category < ApplicationRecord
   validates :name, presence: true, uniqueness: true
 
   def name_with_initial
-    "#{name}"
+    name
   end
-
 end

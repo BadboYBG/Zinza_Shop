@@ -16,6 +16,8 @@ class OrdersController < ApplicationController
   end
 
   def show
+    # TODO: check thu xem co dung duoc current_user o view khong?
+    # TODO: magic number
     @user = current_user
     @orders = @user.orders.page(params[:page]).per 6
   end
@@ -27,6 +29,11 @@ class OrdersController < ApplicationController
   end
 
   def create_order_items
+    # TODO: viet lai de ko query trong vong lap
+    # TODO: viet lai phan tao OrderItem, ko dung truc tiep Model nua ma tao du lieu thong qua @order object
+    # Viet method tao orderItem vao trong Order Model
+    # @order.buildOrderItem()
+    # @order.save
     session[:order_items].each do |key, val|
       product_id = key.to_i
       number = val.to_i

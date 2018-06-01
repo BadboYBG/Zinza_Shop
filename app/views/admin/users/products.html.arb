@@ -1,0 +1,13 @@
+table_for assigns[:user].products do
+  column :name
+  column 'User' do |product|
+    product.user.present? ? product.user.name : content_tag(:span, 'no user yet')
+  end
+  column :price
+  column :sale
+  column :number
+  column :image
+  column 'Category' do |product|
+    product.category.present? ? product.category.name : content_tag(:span, 'no category yet')
+  end
+end

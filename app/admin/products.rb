@@ -3,6 +3,9 @@ ActiveAdmin.register Product do
 
   index do
     column :name
+    column 'User' do |product|
+      product.user.present? ? product.user.name : content_tag(:span, 'no user yet')
+    end
     column :price
     column :sale
     column :number
@@ -31,9 +34,15 @@ ActiveAdmin.register Product do
     active_admin_comments
   end
 
+  csv do
+    column :name
+    column :price
+    column :sale
+    column 'Gia' do |p|
+      price_product(p)
+    end
+  end
+
   filter :name
   filter :category, label: 'Category', as: :select, collection: proc { Category.distinct.pluck :name, :id }
-
-  # form html: { multipart: true } do |f|
-  # end
 end

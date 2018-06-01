@@ -12,6 +12,7 @@ class CartsController < ApplicationController
   end
 
   def update
+    # TODO: need implement this
     id = params[:item][:id_product]
     session[:order_items][id] = params[:item][:quantily].to_i
     flash[:success] = 'Update success'

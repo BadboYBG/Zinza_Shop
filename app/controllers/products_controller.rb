@@ -28,13 +28,13 @@ class ProductsController < ApplicationController
 
   def update
     return render :show if @product.update_attributes product_params
-    flash[:danger] = "Loi"
+    flash[:danger] = 'Loi'
     render :edit
   end
 
   def destroy
     @product.destroy
-    flash[:success] ="Xoa Thanh Cong"
+    flash[:success] = 'Xoa Thanh Cong'
     render :mylist
   end
 
@@ -44,6 +44,7 @@ class ProductsController < ApplicationController
   end
 
   def mylist
+    # TODO: magic number
     @products = current_user.products.page(params[:page]).per 10
   end
 

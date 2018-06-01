@@ -2,7 +2,9 @@ ActiveAdmin.register User do
   permit_params :name, :phone, :address, :avatar, :email
 
   index do
-    column :name
+    column 'name' do |user|
+      link_to user.name, products_admin_user_path(user.id)
+    end
     column :email
     column :phone
     column :address
@@ -22,5 +24,10 @@ ActiveAdmin.register User do
         row :created_at
       end
     end
+  end
+
+  member_action :products do
+    @products = resource.products
+    @page_title = "#{resource.name}: Products"
   end
 end

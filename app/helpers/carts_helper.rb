@@ -2,6 +2,7 @@ module CartsHelper
   def add_carts(id_product)
     session[:order_items][id_product] ||= 0
     # update số lượng nếu người dùng bấm 2 lần thêm giỏ hàng cùng 1 sản phẩm
+    # TODO: rewrite without using loop
     session[:order_items].each do |t, val|
       if t == id_product
         val += 1
@@ -14,20 +15,22 @@ module CartsHelper
   def product_in_carts
     products_cart = []
     session[:order_items].each_key do |id|
-      unless id.nil?
-        product = Product.find_by id: id
-        session[:order_items].delete id if product.nil?
-        products_cart.push(product)
-      end
       next if id.nil?
+      # TODO: rewrite o reduce query
+      # use query in????
+      product = Product.find_by id: id
+      session[:order_items].delete id if product.nil?
+      products_cart.push(product)
     end
     products_cart
   end
 
   def subtotal
     total ||= 0
-    if !product_in_carts.nil?
+    # TODO: xem phan dieu kien nay co the viet lai cho ngan hon duoc khong
+    unless product_in_carts.nil?
       product_in_carts.each do |t|
+        # TODO: viet lai
         total += t.price * session[:order_items][t.id.to_s].to_i unless t.nil?
         next if t.nil?
       end

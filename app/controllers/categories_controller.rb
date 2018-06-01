@@ -4,6 +4,7 @@ class CategoriesController < ApplicationController
   def index; end
 
   def show
+    # TODO: khong dung magic number
     @products = @category.products.page(params[:page]).per 6
   end
 

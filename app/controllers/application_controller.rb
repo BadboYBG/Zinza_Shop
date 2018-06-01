@@ -1,9 +1,7 @@
 class ApplicationController < ActionController::Base
+  include CartsHelper
   protect_from_forgery with: :exception
   before_action :set_locale
-
-  include CartsHelper
-
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :menu
   before_action :create_session
