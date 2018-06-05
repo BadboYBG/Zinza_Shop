@@ -2,7 +2,6 @@ module CartsHelper
   def add_carts(id_product)
     session[:order_items][id_product] ||= 0
     # update số lượng nếu người dùng bấm 2 lần thêm giỏ hàng cùng 1 sản phẩm
-    # TODO: rewrite without using loop
     session[:order_items].each do |t, val|
       if t == id_product
         val += 1
@@ -16,8 +15,6 @@ module CartsHelper
     products_cart = []
     session[:order_items].each_key do |id|
       next if id.nil?
-      # TODO: rewrite o reduce query
-      # use query in????
       product = Product.find_by id: id
       session[:order_items].delete id if product.nil?
       products_cart.push(product)

@@ -44,8 +44,7 @@ class ProductsController < ApplicationController
   end
 
   def mylist
-    # TODO: magic number
-    @products = current_user.products.page(params[:page]).per 10
+    @products = current_user.products.page(params[:page]).per Settings.show_limit.show_12
   end
 
   private

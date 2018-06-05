@@ -2,27 +2,27 @@
   .jumbotron
     .row
       .col-md-4.col-xs-12.col-sm-6.col-lg-4
-        - if @user.avatar.blank?
+        - if current_user.avatar.blank?
           = image_tag("avatar.png",alt: "avatar", class: "img")
         - else
-          = image_tag(@user.avatar.url,alt: "avatar", class: "img")
+          = image_tag(current_user.avatar.url,alt: "avatar", class: "img")
       .col-md-8.col-xs-12.col-sm-6.col-lg-8
         .container{:style => "border-bottom:1px solid black"}
-          %h2= @user.name
+          %h2= current_user.name
         %hr
         %ul.container.details
           %li
             %p
               %span.glyphicon.glyphicon-earphone.one{:style => "width:50px;"}>
-              = @user.phone
+              = current_user.phone
           %li
             %p
               %span.glyphicon.glyphicon-envelope.one{:style => "width:50px;"}>
-              = @user.email
+              = current_user.email
           %li
             %p
               %span.glyphicon.glyphicon-map-marker.one{:style => "width:50px;"}>
-              = @user.address
+              = current_user.address
           %li
             %p
               %span.glyphicon.glyphicon-new-window.one{:style => "width:50px;"}

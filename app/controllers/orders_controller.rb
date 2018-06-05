@@ -3,10 +3,9 @@ class OrdersController < ApplicationController
 
   def create
     @order = Order.new params_order
-    # @order.date_order = Time.now
     if @order.save
+      @order.order_items.build
       create_order_items
-      session.delete :order_items
       redirect_to root_url
       flash[:success] = 'Buy success!'
     else
@@ -16,10 +15,7 @@ class OrdersController < ApplicationController
   end
 
   def show
-    # TODO: check thu xem co dung duoc current_user o view khong?
-    # TODO: magic number
-    @user = current_user
-    @orders = @user.orders.page(params[:page]).per 6
+    @orders = current_user.orders.page(params[:page]).per Settings.show_limit.show_6
   end
 
   private
@@ -34,12 +30,12 @@ class OrdersController < ApplicationController
     # Viet method tao orderItem vao trong Order Model
     # @order.buildOrderItem()
     # @order.save
+
     session[:order_items].each do |key, val|
       product_id = key.to_i
       number = val.to_i
       price = Product.find_by(id: product_id).price
-      order_id = @order.id
-      OrderItem.create(number: number, price: price, order_id: order_id, product_id: product_id)
+      OrderItem.create(number: number, price: price, product_id: product_id)
     end
   end
 end
