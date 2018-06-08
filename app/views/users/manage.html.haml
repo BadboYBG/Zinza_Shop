@@ -1,0 +1,16 @@
+%hr
+%center
+  %h2= t('.customers.')
+%table.table
+  %thead
+    %tr
+      %th= t('forms.name')
+      %th= t('forms.phone')
+      %th= t('forms.email')
+  %tbody
+    - @customers.each do |ct|
+      %tr
+        %td= ct.name
+        %td= ct.phone
+        %td= ct.email
+= paginate @customers, theme: 'twitter-bootstrap-3'

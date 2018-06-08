@@ -9,6 +9,22 @@ vi:
   buttons:
     add_to_cart: "Thêm vào giỏ hàng"
     edit: "Chỉnh sửa"
+    edit_product: "Cap nhat san pham"
+    new: "Tao moi"
+    update: "Cap nhat"
+    remove: "Xoa"
+    add_product: "Them san pham"
+
+    flashs:
+      add cart success: "Them  vao gio hang thanh cong"
+      update_success: "Cap nhat thanh conng!"
+      delete_success: "Xoa thanh cong!"
+      not_found: "Khong tim thay!"
+      buy_success: "Dat hang thanh cong!"
+      error_check_out: "Khong co san phan, hoac khong duoc de trong dia chi va ngay nhan"
+      add_product_success: "Them san pham thnah cong!"
+      error_add_product: "loi them san pham"
+      error_update: "Loi cap nhat "
 
   forms:
     name: "Tên"
@@ -22,6 +38,12 @@ vi:
     login: "Đăng nhập"
     sign_up: "Đăng kí"
     sign_in: "Đăng nhập"
+    number: "So Luong"
+    sale: "Giam gia"
+    detail: "Chi tiet"
+    price: "Gia"
+    date_delivery: "Ngay nhan"
+    search: "Tim Kiem"
 
   carts:
     index:
@@ -34,6 +56,8 @@ vi:
       in_stock: "Còn hàng"
       continue_shopping: "Tiếp tục mua hàng"
       check_out: "Thanh toán"
+      remove: "Xoa"
+      confirm: "Ban co chav khong?"
 
   categories:
     show:
@@ -110,6 +134,9 @@ vi:
       log_out: "Đăng xuất"
       log_in: "Đăng nhập"
       my_list: "sản phẩm"
+      manage: "Khach hang"
+      hot_products: "San pham noi bat"
+      new_products: "San pham moi"
 
     _footer:
       about: "Giới thiệu"

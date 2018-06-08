@@ -11,15 +11,15 @@
           .input-group{:style => "margin-bottom: 25px"}
             %span.input-group-addon
               %i.glyphicon.glyphicon-user
-            = f.number_field :price, autofocus: true, autocomplete: "off", class: "form-control", placeholder: t('forms.name')
+            = f.number_field :price, autofocus: true, autocomplete: "off", class: "form-control", placeholder: t('forms.price')
           .input-group{:style => "margin-bottom: 25px"}
             %span.input-group-addon
               %i.glyphicon.glyphicon-user
-            = f.number_field :sale, autofocus: true, autocomplete: "off", class: "form-control", placeholder: t('forms.name')
+            = f.number_field :sale, autofocus: true, autocomplete: "off", class: "form-control", placeholder: t('forms.sale')
           .input-group{:style => "margin-bottom: 25px"}
             %span.input-group-addon
               %i.glyphicon.glyphicon-user
-            = f.number_field :number, autofocus: true, autocomplete: "off", class: "form-control", placeholder: t('forms.name')
+            = f.number_field :number, autofocus: true, autocomplete: "off", class: "form-control", placeholder: t('forms.number')
           .input-group{:style => "margin-bottom: 25px"}
             %span.input-group-addon
               %i.glyphicon.glyphicon-user
@@ -31,7 +31,7 @@
           .input-group{:style => "margin-bottom: 25px"}
             %span.input-group-addon
               %i.glyphicon.glyphicon-user
-            = f.number_field :detail, autofocus: true, autocomplete: "off", class: "form-control", placeholder: t('forms.name')
+            = f.text_field :detail, autofocus: true, autocomplete: "off", class: "form-control", placeholder: t('forms.detail')
           .form-group{:style => "margin-top:10px"}
             .col-sm-12
-              = f.submit t('forms.sign_up'), class: "btn btn-success", id: "btn-login"
+              = f.submit yield(:add_product), class: "btn btn-success", id: "btn-login"

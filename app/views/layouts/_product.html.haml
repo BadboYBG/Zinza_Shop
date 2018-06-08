@@ -8,15 +8,10 @@
           %span.pnl-label= link_to product.name, product
           - if product.sale > 0
             %span.pnl-price{:style => "text-decoration: line-through; color: red;"} $ #{product.price} 
-            %span.pnl-price= price_product product
+            %span.pnl-price $ #{price_product product}
           - else
-            %span.pnl-price= product.price
+            %span.pnl-price $ #{product.price}
             
-        .pnl-favorites
-          .pnl-ic-wrapper
-            %span.pnl-ic
-              %svg{:space => "preserve", :style => "enable-background:new 0 0 32 32;", :version => "1.1", :viewBox => "0 0 32 32", :x => "0px", :y => "0px"}
-                %path{:d => "M22.6,6.5c-2.9,0-5.4,1.7-6.6,4.1c-1.2-2.4-3.7-4.1-6.6-4.1C5.3,6.5,2,9.8,2,13.9C2,23.7,15.8,29,15.8,29S30,23.6,30,13.9C30,9.8,26.7,6.5,22.6,6.5L22.6,6.5z"}
         .pnl-tocart
           = form_for :session, url: {controller: "carts", action: "create"}, remote: true do |f|
             = f.hidden_field :product_id, value: product.id

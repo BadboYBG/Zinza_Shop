@@ -1,10 +1,10 @@
 class ProductsController < ApplicationController
-  before_action :read_product, only: %i[show edit destroy]
-  before_action :check_login, except: %i[show index]
+  before_action :read_product, only: %i[show edit destroy update]
+  before_action :check_login, except: %i[show index search]
 
   def index
-    @search = Product.list_product.check_number_product.order(price: :desc).ransack params[:search]
-    @products = @search.result.page(params[:page]).per params[:limit]
+    @search = Product.all.ransack params[:q]
+    @products = @search.result.list_product.check_number_product.order(created: :desc).page(params[:page]).per params[:limit]
   end
 
   def new
@@ -14,33 +14,39 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new product_params
     if @product.save
-      flash[:success] = 'Add product success!'
+      flash[:success] = t('flashs.add_product_success')
       redirect_to @product
     else
-      flash[:danger] = 'Error add product'
+      flash[:danger] = t('flashs.error_add_product')
       render :new
     end
   end
 
   def show; end
 
-  def edit; end
+  def edit
+    return redirect_to root_path unless current_user.id == @product.user_id
+  end
 
   def update
     return render :show if @product.update_attributes product_params
-    flash[:danger] = 'Loi'
+    flash[:danger] = t('flashs.error_update')
     render :edit
   end
 
   def destroy
-    @product.destroy
-    flash[:success] = 'Xoa Thanh Cong'
-    render :mylist
+    if current_user.id == @product.user_id
+      @product.destroy
+      flash[:success] = t('flashs.delete_success')
+      render :mylist
+    else
+      redirect_to root_path
+    end 
   end
 
   def search
     @q = Product.ransack params[:search]
-    @ps = @q.result.page(params[:page]).per 6
+    @ps = @q.result.page(params[:page]).per Settings.show_limit.show_6
   end
 
   def mylist
@@ -56,7 +62,7 @@ class ProductsController < ApplicationController
   def read_product
     @product = Product.find_by id: params[:id]
     return unless @product.nil?
-    flash[:danger] = 'Not found'
+    flash[:danger] = t('flash.not_found')
     redirect_to root_path
   end
 end

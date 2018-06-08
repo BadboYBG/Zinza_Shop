@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get "/products/search", to: "products#search"
   get "/user", to: "orders#show"
   get "/mylist", to: "products#mylist"
+  get "user/manage", to: "users#manage"
 
   devise_for :users, controllers:{ registrantions: "registrantions"}
   concern :paginatable do

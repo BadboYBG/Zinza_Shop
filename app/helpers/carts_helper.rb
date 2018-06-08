@@ -24,15 +24,10 @@ module CartsHelper
 
   def subtotal
     total ||= 0
-    # TODO: xem phan dieu kien nay co the viet lai cho ngan hon duoc khong
     unless product_in_carts.nil?
       product_in_carts.each do |t|
-        # TODO: viet lai
         total += t.price * session[:order_items][t.id.to_s].to_i unless t.nil?
-        next if t.nil?
       end
-    else
-      total = 0
     end
     total
   end

@@ -9,6 +9,7 @@
             %th.text-center= t(".price")
             %th.text-center= t(".total")
             %th  
+            %th
         %tbody
           - product_in_carts.each do |product|
             %tr
@@ -25,16 +26,21 @@
                     %span= t(".status")
                     %span.text-success
                       %strong= t("in_stock")
-              %td.col-sm-1.col-md-1{:style => "text-align: center"}
-                %input#exampleInputEmail1.form-control{:type => "email", :value => "#{@order_cart["#{product.id}"]}"}
-              %td.col-sm-1.col-md-1.text-center
-                %strong
-                  $#{product.price}
-              %td.col-sm-1.col-md-1.text-center
-                %strong
-                  $#{total_price_product product.price, @order_cart["#{product.id}"]}
+              = form_for :item, url: cart_path(product), method: :patch, remote: true do |f|
+                %td.col-sm-1.col-md-1{:style => "text-align: center"}
+                  = f.number_field :quantily, value: @order_cart["#{product.id}"].to_i, min:1
+                %td.col-sm-1.col-md-1.text-center
+                  %strong
+                    $#{product.price}
+                %td.col-sm-1.col-md-1.text-center
+                  %strong.total
+                    $#{total_price_product product.price, @order_cart["#{product.id}"]}
+                
+                = f.hidden_field :id_product, value: "#{product.id}"
+                %td.col-sm-1.col-md-1
+                  = f.button "Update", type: "submit", class: 'btn btn-success sub btn-change-quantity'
               %td.col-sm-1.col-md-1
-                = link_to "Remove", cart_path(product.id), method: :delete, class: 'btn btn-danger sub', remote: true
+                = link_to t(".remove"), cart_path(product.id), method: :delete, class: 'btn btn-danger sub', remote: true, data: {confirm: t(".confirm")}
           %tr
             %td  
             %td  
@@ -43,7 +49,7 @@
               %h3= t(".total")
             %td.text-right
               %h3
-                %strong
+                %strong.subtotal
                   $#{subtotal}
           %tr
             %td  
@@ -56,10 +62,10 @@
             %td
               = form_for @order, url: {controller: "orders", action: "create"}, remote: true do |f|
                 %p
-                  = f.label :address, "Address"
+                  = f.label :address, t("forms.address")
                   = f.text_field :address, class: "form_control"
                 %p
-                  = f.label :date_delivery, "Date Delivery"
+                  = f.label :date_delivery, t("forms.date_delivery")
                   = f.date_field :date_delivery, class: "form_control"
                 %p
                   = f.hidden_field :total, value: subtotal.to_i

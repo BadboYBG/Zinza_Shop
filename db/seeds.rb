@@ -13,6 +13,7 @@ Category.create(name: 'Scarf')
     image: 'minh.jpg',
     category_id: Faker::Number.between(1, 5),
     user_id: 1,
+    view: Faker::Number.between(100, 1000),
     detail: Faker::ChuckNorris.fact
   )
 end

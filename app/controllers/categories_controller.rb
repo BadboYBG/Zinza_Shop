@@ -12,7 +12,7 @@ class CategoriesController < ApplicationController
   def category_params
     @category = Category.find_by id: params[:id]
     return unless @category.nil?
-    flash[:danger] = 'Not found'
+    flash[:danger] = t('flashs.not_found')
     redirect_to root_url
   end
 end

@@ -34,7 +34,6 @@
       %thead
         %tr
           %th #
-          %th= t('.id')
           %th= t('.date_registered')
           %th= t('.total')
           %th= t('.address')
@@ -43,13 +42,12 @@
         - @orders.each_with_index do |order, index|
           %tr
             %td= create_index params[:page], index, 6
-            %td= order.id
             %td= order.created_at
             %td $ #{order.total}
             %td= order.address
             %td
               - if order.status == "pending"
-                %span.label.label-warning= = t('.pending')
+                %span.label.label-warning= t('.pending')
               - else
                 %span.label.label-success= t('.active')
 

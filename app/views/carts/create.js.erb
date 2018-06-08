@@ -1,0 +1,6 @@
+<% unless @id_product.nil? %>
+  alert("Add Success!");
+  $(".number-c").text("<%= many_carts %>")
+<% else %>
+  alert("Add fail!")
+<% end %>

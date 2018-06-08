@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(version: 20180530021210) do
   create_table "orders", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "user_id"
     t.decimal "total", precision: 10
-    t.integer "status", default: 0
+    t.integer "status", default: 1
     t.date "date_delivery"
     t.string "address"
     t.datetime "created_at", null: false
@@ -78,6 +78,7 @@ ActiveRecord::Schema.define(version: 20180530021210) do
     t.integer "number"
     t.string "detail"
     t.string "image"
+    t.integer "view"
     t.bigint "category_id"
     t.bigint "user_id"
     t.datetime "created_at", null: false

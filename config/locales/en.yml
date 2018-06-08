@@ -9,6 +9,22 @@ en:
   buttons:
     add_to_cart: "ADD TO CART"
     edit: "Edit"
+    edit_product: "Edit Product"
+    new: "New"
+    update: "Update"
+    remove: "Remove"
+    add_product: "Add Product"
+
+  flashs:
+    add cart success: "Add cart success!"
+    update_success: "Update success!"
+    delete_success: "Delete success!"
+    not_found: "Not found!"
+    buy_success: "Buy success!"
+    error_check_out: "No product or can't blank address, date delivery"
+    add_product_success: "Add product success"
+    error_add_product: "Error add product"
+    error_update: "Error update"
 
   forms:
     name: "Name"
@@ -22,6 +38,12 @@ en:
     login: "Login"
     sign_up: "Sign up"
     sign_in: "Sign In"
+    number: "Number"
+    sale: "Sale"
+    detail: "Detail"
+    price: "Price"
+    date_delivery: "Date Delivery "
+    search: "Search"
 
   carts:
     index:
@@ -34,6 +56,8 @@ en:
       in_stock: "In Stock"
       continue_shopping: "Continue Shopping"
       check_out: "Check out"
+      remove: "Remove"
+      confirm: "Are you sure?"
 
   categories:
     show:
@@ -112,6 +136,9 @@ en:
       log_out: "Log out"
       log_in: "Login"
       my_list: "My List"
+      manage: "Customers"
+      hot_products: "Hot Products"
+      new_products: "New Products"
 
     _footer:
       about: "About"

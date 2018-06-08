@@ -3,13 +3,13 @@ class OrdersController < ApplicationController
 
   def create
     @order = Order.new params_order
-    if @order.save
-      @order.order_items.build
-      create_order_items
+    @order.create_order_items(session[:order_items], current_user)
+    if @order.save 
+      session.delete :order_items
       redirect_to root_url
-      flash[:success] = 'Buy success!'
+      flash[:success] = t('flashs.buy_success')
     else
-      flash[:danger] = 'No product or can\'t blank address, date delivery'
+      flash[:danger] = t('flashs.error_check_out')
       redirect_to carts_path
     end
   end
@@ -22,20 +22,5 @@ class OrdersController < ApplicationController
 
   def params_order
     params.require(:order).permit :address, :date_delivery, :total, :user_id
-  end
-
-  def create_order_items
-    # TODO: viet lai de ko query trong vong lap
-    # TODO: viet lai phan tao OrderItem, ko dung truc tiep Model nua ma tao du lieu thong qua @order object
-    # Viet method tao orderItem vao trong Order Model
-    # @order.buildOrderItem()
-    # @order.save
-
-    session[:order_items].each do |key, val|
-      product_id = key.to_i
-      number = val.to_i
-      price = Product.find_by(id: product_id).price
-      OrderItem.create(number: number, price: price, product_id: product_id)
-    end
   end
 end

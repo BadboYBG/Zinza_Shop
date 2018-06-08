@@ -15,4 +15,13 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
+
+  scope :list_prodcts, -> {joins(:products)}
+  scope :get_user, ->(id){where id: id}
+
+  def customers
+    ordered_products =  products.includes(:orders).select{|product| product.orders.present?}
+    user_ids = ordered_products.map(&:orders).flatten.map(&:user_id).uniq
+    User.where(id: user_ids)
+  end
 end
