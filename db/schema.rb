@@ -12,7 +12,10 @@
 
 ActiveRecord::Schema.define(version: 20180530021210) do
 
-  create_table "active_admin_comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
     t.text "body"
     t.string "resource_type"
@@ -26,7 +29,7 @@ ActiveRecord::Schema.define(version: 20180530021210) do
     t.index ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id"
   end
 
-  create_table "admin_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "admin_users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -43,15 +46,15 @@ ActiveRecord::Schema.define(version: 20180530021210) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
-  create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "categories", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "order_items", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "order_items", force: :cascade do |t|
     t.integer "number"
-    t.decimal "price", precision: 10
+    t.decimal "price"
     t.bigint "order_id"
     t.bigint "product_id"
     t.datetime "created_at", null: false
@@ -60,9 +63,9 @@ ActiveRecord::Schema.define(version: 20180530021210) do
     t.index ["product_id"], name: "index_order_items_on_product_id"
   end
 
-  create_table "orders", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "orders", force: :cascade do |t|
     t.bigint "user_id"
-    t.decimal "total", precision: 10
+    t.decimal "total"
     t.integer "status", default: 1
     t.date "date_delivery"
     t.string "address"
@@ -71,9 +74,9 @@ ActiveRecord::Schema.define(version: 20180530021210) do
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
-  create_table "products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "products", force: :cascade do |t|
     t.string "name"
-    t.decimal "price", precision: 10
+    t.decimal "price"
     t.integer "sale"
     t.integer "number"
     t.string "detail"
@@ -87,7 +90,7 @@ ActiveRecord::Schema.define(version: 20180530021210) do
     t.index ["user_id"], name: "index_products_on_user_id"
   end
 
-  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "phone"
     t.string "address"

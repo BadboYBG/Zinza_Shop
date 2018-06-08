@@ -40,7 +40,7 @@
                 %strong
                   #{product.created_at}
               %td.col-sm-1.col-md-1
-                = link_to t("buttons.update)", edit_product_path(product.id), class: 'btn btn-success sub btn-change-quantity'
+                = link_to t("buttons.update"), edit_product_path(product.id), class: 'btn btn-success sub btn-change-quantity'
                 = link_to t("buttons.remove"), product_path(product.id), method: :delete, class: 'btn btn-danger sub', remote: true
 
         = paginate @products, theme: 'twitter-bootstrap-3'
